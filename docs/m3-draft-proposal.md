@@ -46,3 +46,15 @@ We chose one row per trip over a daily summary because the hour question and the
 
 Each of us writes our own files and commits them under our own name. Anyone can run all of them.
 We meet once a week for 45 minutes. Whoever is blocked says so in the team chat the same day.
+
+## Paired read note
+
+- **Read by:** Team Y, asynchronously (they left comments on our draft and we talked for ten minutes after Studio).
+- **Three changes we are making:**
+  1. **Drop question 5.** Team Y asked how trip counts could show where a station is missing. They cannot. The
+     data only has stations that exist. We will keep to questions the trips can answer.
+  2. **Fix the date range and write it down.** Team Y could not tell which years our numbers covered. We will use
+     2023-01-01 to 2025-12-31 everywhere, three full calendar years.
+  3. **Say which system each station answer is about.** Team Y pointed out that if the station ids changed in
+     2024, a "busiest station" list over three years mixes two sets of stations. Station questions will use the
+     current system, and we will say so in each answer.
