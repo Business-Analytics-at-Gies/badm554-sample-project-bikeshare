@@ -184,3 +184,32 @@ in the room. Anyone can run the whole build.
 **What we learned.** Items 3 and 4 came from people who had never queried our data. They asked "which stations?"
 and "do you have that column for those rows?" We had looked at each table and never at whether the two tables talk
 about the same stations. We now check every join for coverage before we plan around it.
+
+## Appendix: design-rationale evidence
+
+**A. Our sketch before any AI** (Member B, on paper in Studio, typed up here).
+
+```
+trips  (one row per trip)
+  trip_id, start_time, start_station, end_station, pass_type, bike_type, minutes
+
+stations (one row per station)
+  station_id, name, docks, district
+
+Question: do we need a date table at all, or just use start_time?
+```
+
+Two tables. No date dimension, no rider type dimension.
+
+**B. Alternatives from an AI assistant.** We gave it our sketch and our four questions and asked for other designs.
+
+| Alternative | What it was | Our decision |
+|---|---|---|
+| 1 | Separate `dim_start_station` and `dim_end_station` | Rejected. Same stations twice. |
+| 2 | A date-and-hour dimension, one row per hour | Rejected. 26,304 rows to hold one number. Hour stays on the fact. |
+| 3 | A `dim_date` with weekday and weekend flags | Kept. Question 2 needs weekday or weekend, and we did not want that logic repeated in every query. |
+| 4 | A `dim_rider_type` that groups pass names | Kept. There are 17 pass names and the planner thinks in three or four groups. |
+| 5 | A daily summary fact next to the trip fact | Rejected for now. The trip fact is small enough to query directly. |
+
+**C. Final schema.** Section 2. Compared with our sketch: we added `dim_date` and `dim_rider_type` (from the AI's
+list), kept one station table joined twice (our own sketch, against the AI's first idea), and kept the trip grain.
