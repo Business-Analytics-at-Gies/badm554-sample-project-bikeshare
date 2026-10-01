@@ -13,7 +13,7 @@ the public Austin bikeshare dataset in BigQuery.
 
 Find the module you are in, in [the table below](#find-what-you-need-this-week), and open that file.
 You can do everything in the BigQuery console, with nothing installed. The command line steps are optional.
-The folder layout comes from the course structure repo. The decisions (station keys, number of checks, .sql files
+The folder layout comes from the course [structure repo](https://github.com/Business-Analytics-at-Gies/badm554-project-structure), which has the empty version of every folder and template. The decisions (station keys, number of checks, .sql files
 vs a notebook) belong to this dataset and this team, so do not copy them.
 
 **Behind?** Start with [the Module 5 analysis draft](docs/m5-analysis-draft.md), then build one view and one table in the console. Your queries can live in one notebook, or in the `shared/` folder your team repo already has. You do not need this repo's folder layout.
