@@ -95,6 +95,7 @@ members/                   each member's weekly work (not included in this sampl
 | 4 | Final Proposal: questions, schema and grain, ETL plan, labour split, AI checkpoint, feedback memo, appendix | `docs/m4-final-proposal.md` |
 | 5 | Analysis Draft: diagram, pipeline sketch, two queries | `docs/m5-analysis-draft.md` |
 | 6 | Data Product: the pipeline, and the recovery evidence | `etl/`, `docs/m6-recovery-note.md` |
+| 6 | Data Product: the one document uploaded for review, as a PDF (rebuild steps, schema, every query, row counts, two analyses, recovery note) | `docs/m6-data-product-submission.md` |
 | 7 | Revision and Rehearsal: reviews received, feedback closure, rehearsal outline | `docs/peer-reviews/`, `docs/feedback-closure.md`, `docs/m7-rehearsal-outline.md` |
 | 8 | Final Deliverable | this README, `warehouse/`, `validation/`, `analyses/`, `reports/`, `docs/schema.md`, `docs/ai-attribution-log.md`, `docs/presentation-outline.md` |
 | 8 | Oral defense prep, one section per member | `docs/defense-prep.md` |
