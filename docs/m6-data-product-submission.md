@@ -1,5 +1,11 @@
 Module 6 Data Product: what the team uploaded to the review tool as one PDF (this markdown is the source of that PDF).
 
+Back to the [project README](../README.md) · [the same document as a PDF](m6-data-product-submission.pdf)
+
+> **As submitted, with its gaps.** Section 1 leaves out "make the dataset first". Reviewers and the mentor flagged
+> it (see [feedback-closure item 1](feedback-closure.md)). Put that step in yours. To make your PDF: print this page
+> from GitHub, or export your notebook to PDF.
+
 # Sample Team: Austin bikeshare data product (Module 6)
 
 Team: Sample Team (Sample Member A, Sample Member B, Sample Member C).
