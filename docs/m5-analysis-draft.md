@@ -86,3 +86,8 @@ ORDER BY month;
 not think ridership fell by more than 80% for one month. We think the operator changed systems in July and part of the
 month is missing. We have not confirmed this yet. If the trend answer for question 4 includes July 2024 without
 a note, it will mislead the planner. Next step: count trips per day around July 2024.
+
+## Where we are stuck
+
+Step 4. We want to be sure the station ids are safe to join on before we build `dim_station` and the fact.
+We would like to talk about what else to test with our mentor.
