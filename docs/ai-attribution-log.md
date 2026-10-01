@@ -6,7 +6,7 @@ Our log for the whole term. One row per step where AI helped. AI use in the proj
 revision (AIAS 2). The pitch questions, the rehearsal answers and the oral defense are our own, with no AI.
 
 **About this sample.** This whole sample project, including this log, the documents and the queries, was produced
-by an AI agent (Claude) working from the course's instructions, and is to be reviewed by the instructor before release. The team
+by an AI agent (Claude) working from the course's instructions, and was reviewed by the instructor before release. The team
 is fictional. The rows below show what a team's log looks like. Rows marked with a star describe
 things that really happened while the sample was built. The other rows are examples. Every number is from a
 query that was run.

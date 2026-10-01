@@ -47,8 +47,8 @@ Every file in `docs/`, grouped by module, is listed in [docs/README.md](docs/REA
 ## About this sample
 
 **How it was made.** The whole sample was produced by an AI agent (Claude) working from the course's project
-instructions, in one sitting on the night of September 30 to October 1, 2026. It is to be reviewed by the
-instructor before release. The commits were made in one batch, seconds apart. Their order shows the work growing module by
+instructions, in one sitting on the night of September 30 to October 1, 2026. The instructor reviewed it
+before release. The commits were made in one batch, seconds apart. Their order shows the work growing module by
 module, with each member committing their own files. Their times mean nothing. The commits also go straight to
 `main`. A real team would use a branch and a pull request for each change, as [`CONTRIBUTING.md`](CONTRIBUTING.md) says.
 See [`docs/ai-attribution-log.md`](docs/ai-attribution-log.md).
