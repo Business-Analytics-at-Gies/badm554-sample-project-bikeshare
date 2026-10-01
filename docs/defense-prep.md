@@ -52,3 +52,38 @@ query finds them. It only affects dock counts for the legacy system.
 2. *"Your gain and loss numbers: what would make them wrong?"* An end station recorded wrongly in the source, and
    bikes moved by the van, which are not trips. I should also think about trips that start and end at the same
    station: they add one to both sides and do not change the net.
+
+## Member C
+
+**What I built.** `etl/04_dim_date.sql`, `etl/05_dim_rider_type.sql`, `etl/07_row_counts.sql`. Question 2.
+Checks 3, 5 and 7, and `validation/README.md`. I kept the AI Attribution Log.
+
+**A decision that was mine, and why the alternative was worse.** The rider groups. The source has 17 pass names.
+The alternative was to report all 17, which is accurate and useless to the planner, or to split only into
+"member" and "casual", which hides that annual and monthly members ride differently (median 5.4 minutes against
+9.8 on weekdays). I chose five groups and wrote down that they are mine. I also restricted question 2 to 2025,
+because the Student group has 145,890 trips in 2023 and none in 2025. I cannot tell from the data whether the
+students left or their pass was renamed. Annual member trips rose from 31,872 to 238,223 over the same years,
+which fits a renamed pass. I should say it is a guess.
+
+**The day my own check was wrong.** Check 5 expected 23 days with no trips. It found 24. I first assumed I had
+broken the calendar. The extra day, 2023-02-01, has no trips in the public table either. My expectation was
+wrong and the tables were right. I changed the check to name the 24 days.
+
+**Follow-up questions I expect.**
+
+1. *"How do you know the hours are local time?"* I do not know. I infer it from the pattern, and I say so. I
+   should be ready to say what I would do to find out: ask the operator, or compare a known event with a known
+   local time.
+2. *"All seven checks pass. So the numbers are right?"* No. They show our tables agree with the source and with
+   themselves. I should be able to name, for each check, one mistake it would miss. That column is in
+   `validation/README.md` and I wrote it, so I should know it without looking.
+
+## How our AI use changed (each of us answers this for ourselves)
+
+Prompts we used to prepare, with our own log open:
+
+- What did I ask AI for in Module 2, and what do I ask it for now?
+- Name one thing AI gave me that I kept, and one I threw away. How did I decide?
+- When did I check an AI answer against the data, and what did the check find?
+- How did I get at the data for each task: SQL in the console, the command line, or a chat assistant? Why?
