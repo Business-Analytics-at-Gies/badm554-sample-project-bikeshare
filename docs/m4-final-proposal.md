@@ -142,3 +142,28 @@ Questions 2 and 3 follow in Modules 7 and 8.
 not tested whether an id always means the same station inside one system. If it does not, `dim_station` keyed on
 the id will be wrong. Fallback: key the station on its name instead of its id. Member B tests this first, before
 anyone builds the fact.
+
+## 4. Division of labour and AI Attribution checkpoint
+
+| Member | Files | Also |
+|---|---|---|
+| Member A | `etl/01_stg_trips.sql`, `etl/06_fact_trip.sql`, `etl/run_all.sh` | the date range; question 4; the rebuild steps in the README |
+| Member B | `etl/02_stg_stations.sql`, `etl/03_dim_station.sql` | questions 1 and 3; `docs/schema.md` |
+| Member C | `etl/04_dim_date.sql`, `etl/05_dim_rider_type.sql`, `etl/07_row_counts.sql` | `validation/`; question 2; the AI Attribution Log |
+
+Each member commits their own files under their own name. Each of us can explain our own files without the others
+in the room. Anyone can run the whole build.
+
+**AI Attribution checkpoint.** One decision AI changed, and how we checked it.
+
+- *Where AI came in.* After our own sketch (appendix), Member B asked an AI assistant for other ways to model the
+  stations. It proposed two separate dimensions, `dim_start_station` and `dim_end_station`.
+- *What we did.* We rejected it. Two station tables would hold the same stations twice and could drift apart.
+  We kept one `dim_station` and join it twice.
+- *What we kept from AI.* A `dim_rider_type` that groups pass names, and a `dim_date` with a weekend flag. Our
+  own sketch had neither.
+- *How we verified.* Member C listed the pass names in our date range. There are 17. The planner cannot use 17
+  rows, so a table that groups them earns its place. For the date table, Member C wrote question 2 on paper with
+  and without it. Without it, the weekday or weekend rule has to be repeated in every query.
+- *One more AI idea we tested and dropped.* A date-and-hour dimension. 1,096 days times 24 hours is 26,304 rows,
+  to hold one extra number. The hour stays on the trip.
