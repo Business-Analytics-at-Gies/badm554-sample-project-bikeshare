@@ -16,7 +16,7 @@ You can do everything in the BigQuery console, with nothing installed. The comma
 The folder layout comes from the course structure repo. The decisions (station keys, number of checks, .sql files
 vs a notebook) belong to this dataset and this team, so do not copy them.
 
-**Behind?** Start with [the Module 5 analysis draft](docs/m5-analysis-draft.md), then build one view and one table in the console. One notebook, or the `shared/` folder from the course structure repo, is fine.
+**Behind?** Start with [the Module 5 analysis draft](docs/m5-analysis-draft.md), then build one view and one table in the console. Your queries can live in one notebook, or in the `shared/` folder your team repo already has. You do not need this repo's folder layout.
 
 **If you only have five minutes**, read these in this order:
 
