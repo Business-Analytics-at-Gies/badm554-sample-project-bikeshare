@@ -38,3 +38,14 @@ the stations table may be out of date. We will check it before we promise the pe
 **Member A, close.** "We will build one trips table with a station, a date and a rider type table around it, in
 BigQuery, from queries in our repo. Anyone can rebuild it. The planner gets one page: four questions, four
 answers, each with a number."
+
+## Questions we expect, and who answers
+
+- "Busy stations are obvious. What will I learn that I do not already know?" (Member B) We expect the per-dock view
+  and the gain-or-lose view to differ from the plain busy list. If they do not, we will say so.
+- "A quiet station might be quiet because it is always empty. Can you tell?" (Member C) No. We will say that
+  clearly and not call it low demand.
+- "Why three years and not all twelve?" (Member A) The system today is not the system of 2014. Recent years
+  describe the decision better. We will fix the range and keep it.
+
+Answers in the recording are our own. We did not use AI during the questions.
