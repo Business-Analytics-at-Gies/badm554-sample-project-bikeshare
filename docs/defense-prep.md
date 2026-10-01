@@ -27,3 +27,28 @@ trips. I ran one month first (22,180 rows for 22,052 trips) and that is how we s
 2. *"You join on a station name. What if a name is spelled two ways?"* Then it is two stations in our table. I
    clean whitespace only. I should say plainly that I do not fix spelling, and that check 6 would still pass,
    because it compares with the same cleaned name.
+
+## Member B
+
+**What I built.** `etl/02_stg_stations.sql` and `etl/03_dim_station.sql`. Questions 1 and 3. `docs/schema.md`.
+Checks 4 and 6.
+
+**A decision that was mine, and why the alternative was worse.** One row per station name per system, with a new
+key, and the source id kept only for reference. The alternative was our plan: one row per station id. It was
+worse for two reasons I can show with numbers. Four ids have two names, which multiplied trips. And in 2023
+the end id on 47,175 trips does not lead to the end name on the trip. The name is never empty and is consistent,
+so I trust the name.
+
+**The thing I am least sure of.** The two swapped ids (2498 and 3794). I found them by reading two lists of
+names side by side. I am confident about those two. I cannot promise there is no third pair I missed, because no
+query finds them. It only affects dock counts for the legacy system.
+
+**Follow-up questions I expect.**
+
+1. *"Why not match the old and new stations? Most names look the same."* The simple rule matches 55 of 88. I would
+   have to match 33 by hand with no location to check against. I should be ready for the push: "55 is most of
+   them, why not use those?" My answer is that the busiest stations would be compared and the others dropped
+   without the planner seeing it, and I would sooner say the comparison is not possible yet.
+2. *"Your gain and loss numbers: what would make them wrong?"* An end station recorded wrongly in the source, and
+   bikes moved by the van, which are not trips. I should also think about trips that start and end at the same
+   station: they add one to both sides and do not change the net.
