@@ -35,3 +35,14 @@ A star schema with one fact table and three dimensions.
 - Bike type and start hour stay on the fact as plain columns.
 
 We chose one row per trip over a daily summary because the hour question and the rider question need single trips.
+
+## Division of labour
+
+| Member | Owns | First task |
+|---|---|---|
+| Member A | the trips cleaning step, the fact table, the date range, question 4 | write the cleaning view with a fixed date range |
+| Member B | the station dimension, questions 1 and 3 | check the stations table against the stations in the trips |
+| Member C | the date and rider type dimensions, the validation checks, question 2 | list every pass name and propose rider groups |
+
+Each of us writes our own files and commits them under our own name. Anyone can run all of them.
+We meet once a week for 45 minutes. Whoever is blocked says so in the team chat the same day.
