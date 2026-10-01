@@ -82,6 +82,14 @@ station id. It failed in two ways when we built it. Four ids carry two names eac
 in 2023 the end station id disagrees with the end station name on 47,175 trips. The name is on every trip and
 is never empty, so we trust the name. Details in `docs/m6-recovery-note.md`.
 
+**Why a station can appear twice.** The system changed in July 2024. The trips show a 23-day gap, then all-new
+station ids and a new bike type. We call this a system change, though we did not confirm it with the operator.
+Every station got a new id and
+many got a new name ("21st/Speedway @ PCL" became "E 21st/Speedway @ PCL"). We keep the two systems apart with
+`system_name`. A simple rule (drop the leading E, W, N or S) matches 55 of the 88 current names to a legacy name.
+The other 33 would need matching by hand, and we have no map location for current stations to check a match
+against. So we did not join the two systems. Questions about stations use one system at a time.
+
 **Why dock counts are missing for current stations.** The city's station list has 101 rows and all of them are
 legacy stations. None of the 88 current stations is in it. 71 of the 83 legacy stations are. So "trips per dock"
 can only be answered for the legacy system.
@@ -90,6 +98,20 @@ can only be answered for the legacy system.
 (Dean Keeton/Speedway and 4th/Sabine). We follow the name on the trips and swap the two ids when we look up
 docks. We found this by reading the two name lists side by side. No check would have told us.
 
+**Hours are read as local Austin time.** The source column is a timestamp with no time zone note. The hourly
+pattern fits local time: the quietest hour is 4 AM and the busiest is 5 PM. If the hours were UTC, the busiest
+hour would be around noon local time and the quietest around 11 PM, which is unlikely for a bike system. This
+is an assumption we could not confirm.
+
+**Rider groups are ours.** The source has 17 pass names. We grouped them into Student, Annual member, Monthly
+member, Casual and Other in `etl/05_dim_rider_type.sql`. We put "Explorer" under Casual because its trips are
+long (like day passes), but we did not find a definition of it. The Student group has 145,890 trips in 2023
+and none in 2025: student passes do not exist as a separate name in the current system. So we do not compare
+rider groups across the system change.
+
 **Test and operations rows are kept.** One trip has the pass name "TEST PRODUCT", one touches a station named
 "TEST-LucJ", and five touch "Warehouse Station" or "Ready for deployment". We kept these rows (seven at most)
 so that the fact table has exactly the same number of trips as the source. They are too few to move any result.
+
+**Long trips are kept.** 153 trips are longer than a day (113 of them in 2023). They are probably bikes that were
+not docked properly. We keep them and use the median for trip length.
