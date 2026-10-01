@@ -2,6 +2,9 @@
 
 Back to the [project README](../README.md)
 
+In the course, each member's Module 7 assignment adds three checks, with written predictions first. That
+individual work is not shown here. The checks below are the team's project checks.
+
 Seven checks. Each is one query that returns one row ending in `PASS` or `FAIL`.
 Run them all with `sh validation/run_checks.sh YOUR_PROJECT_ID` ([the script](run_checks.sh)), or paste each file into the BigQuery console.
 

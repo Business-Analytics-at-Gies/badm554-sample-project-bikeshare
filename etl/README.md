@@ -2,6 +2,9 @@
 
 Back to the [project README](../README.md)
 
+A notebook with these queries in ordered cells is just as good (see the course page Where Your Team's Data Lives).
+Some choices here, like keying stations by name, fit this dataset's station-id problem. Your data may need a different key.
+
 The queries that build our tables. Run them in number order. Each file says who owns it at the top.
 
 | File | What it makes | Kind | Owner |

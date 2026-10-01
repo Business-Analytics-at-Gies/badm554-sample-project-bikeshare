@@ -17,6 +17,9 @@ filter them out in the cleaning view. That would have made nicer averages. But t
 the same number of rows as the source, and my check 1 would have to allow a difference. A check that allows
 "about the same" would not have caught 26,693 extra rows as clearly. I chose an exact match and the median.
 
+**Why BigQuery?** The defense asks "Why this database?" The data is already public there, there is nothing to
+download, and each of us rebuilds the same counts.
+
 **My wrong turn.** My first `fact_trip` joined stations on the id. It ran, and it had 935,544 rows for 908,851
 trips. I ran one month first (22,180 rows for 22,052 trips) and that is how we saw it early.
 
