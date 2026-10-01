@@ -1,0 +1,12 @@
+# Nothing large goes in git. Our tables live in BigQuery and are rebuilt from etl/.
+data/*
+warehouse/*
+!warehouse/README.md
+*.duckdb
+
+# Secrets and local clutter
+.env
+*.key
+.ipynb_checkpoints/
+__pycache__/
+.DS_Store
