@@ -1,5 +1,7 @@
 # Module 3: Draft Proposal
 
+Back to the [project README](../README.md)
+
 **Team:** Sample Team. **Stakeholder:** a senior planner in a city transportation department.
 
 ## Stakeholder and decision

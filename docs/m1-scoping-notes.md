@@ -1,5 +1,7 @@
 # Module 1: Project Launch
 
+Back to the [project README](../README.md)
+
 **Team:** Sample Team (Sample Member A, Sample Member B, Sample Member C)
 
 ## Our pairing

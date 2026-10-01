@@ -5,6 +5,7 @@
 --         A positive net means bikes pile up (the van takes bikes away). A negative net means the station empties.
 -- What would make it wrong: the trips table only shows rides. Bikes moved by the operator's van are not in
 --         it, so this is the imbalance riders create, before any rebalancing.
+-- Explained in: analyses/README.md and reports/final-report.md (question 3).
 WITH starts AS (
   SELECT start_station_key AS station_key, COUNT(*) AS trips_started
   FROM sample_bikeshare_star.fact_trip AS f

@@ -5,6 +5,7 @@
 --         The city list has no dock count for any current-system station, so this cannot be done for 2025.
 -- What would make it wrong: dock counts that changed since the city list was last edited (2021 and 2022).
 --         We cannot check that from this data.
+-- Explained in: analyses/README.md and reports/final-report.md (question 1).
 SELECT
   st.station_name,
   st.number_of_docks,

@@ -1,5 +1,7 @@
 # Module 4: Final Proposal
 
+Back to the [project README](../README.md)
+
 **Team:** Sample Team (Sample Member A, B and C). One file for the whole team.
 **Repo:** this repository. Links in this file point to files in it.
 
@@ -12,7 +14,7 @@ where the city adds docks and where the rebalancing van goes. The planner wants 
 
 | Draft | Final | Why |
 |---|---|---|
-| Q1. Busiest stations, and busiest per dock | Q1. Busiest stations in the current system (2025). Per dock only for the legacy system (2023). | The city's station list has dock counts for legacy stations only. See the feedback-closure memo. |
+| Q1. Busiest stations, and busiest per dock | Q1. Busiest stations in the current system (2025). Per dock only for the legacy system (2023). | The city's station list has dock counts for legacy stations only. See the [feedback-closure memo](#5-feedback-closure-memo). |
 | Q2. When do people ride, by rider type | Q2. Same. | No change. |
 | Q3. Which stations gain or lose bikes | Q3. Same, current system, 2025. | Team Y: say which system each station answer is about. |
 | Q4. How ridership changed over three years | Q4. Same, by month, with July 2024 marked. | July 2024 has 2,035 trips. It looks like a change of system, and a reader must not take it for a real drop. |
@@ -147,16 +149,16 @@ anyone builds the fact.
 
 | Member | Files | Also |
 |---|---|---|
-| Member A | `etl/01_stg_trips.sql`, `etl/06_fact_trip.sql`, `etl/run_all.sh` | the date range; question 4; the rebuild steps in the README |
-| Member B | `etl/02_stg_stations.sql`, `etl/03_dim_station.sql` | questions 1 and 3; `docs/schema.md` |
-| Member C | `etl/04_dim_date.sql`, `etl/05_dim_rider_type.sql`, `etl/07_row_counts.sql` | `validation/`; question 2; the AI Attribution Log |
+| Member A | [`etl/01_stg_trips.sql`](../etl/01_stg_trips.sql), [`etl/06_fact_trip.sql`](../etl/06_fact_trip.sql), [`etl/run_all.sh`](../etl/run_all.sh) | the date range; question 4; the rebuild steps in the README |
+| Member B | [`etl/02_stg_stations.sql`](../etl/02_stg_stations.sql), [`etl/03_dim_station.sql`](../etl/03_dim_station.sql) | questions 1 and 3; [`docs/schema.md`](schema.md) |
+| Member C | [`etl/04_dim_date.sql`](../etl/04_dim_date.sql), [`etl/05_dim_rider_type.sql`](../etl/05_dim_rider_type.sql), [`etl/07_row_counts.sql`](../etl/07_row_counts.sql) | [`validation/`](../validation/README.md); question 2; the [AI Attribution Log](ai-attribution-log.md) |
 
 Each member commits their own files under their own name. Each of us can explain our own files without the others
 in the room. Anyone can run the whole build.
 
 **AI Attribution checkpoint.** One decision AI changed, and how we checked it.
 
-- *Where AI came in.* After our own sketch (appendix), Member B asked an AI assistant for other ways to model the
+- *Where AI came in.* After our own sketch ([appendix](#appendix-design-rationale-evidence)), Member B asked an AI assistant for other ways to model the
   stations. It proposed two separate dimensions, `dim_start_station` and `dim_end_station`.
 - *What we did.* We rejected it. Two station tables would hold the same stations twice and could drift apart.
   We kept one `dim_station` and join it twice.
@@ -211,5 +213,5 @@ Two tables. No date dimension, no rider type dimension.
 | 4 | A `dim_rider_type` that groups pass names | Kept. There are 17 pass names and the planner thinks in three or four groups. |
 | 5 | A daily summary fact next to the trip fact | Rejected for now. The trip fact is small enough to query directly. |
 
-**C. Final schema.** Section 2. Compared with our sketch: we added `dim_date` and `dim_rider_type` (from the AI's
+**C. Final schema.** [Section 2](#2-dimensional-schema). Compared with our sketch: we added `dim_date` and `dim_rider_type` (from the AI's
 list), kept one station table joined twice (our own sketch, against the AI's first idea), and kept the trip grain.

@@ -1,5 +1,7 @@
 # Mentor review
 
+Back to [all reviews](README.md) or the [project README](../../README.md)
+
 I have access to your repo, so I did not work from the PDF alone. I cloned the repo and ran
 `sh etl/run_all.sh` with my own project id. It stopped at file 01 with "Not found: Dataset". Once I made
 `sample_bikeshare_star` by hand, everything ran and my row counts matched yours (908,851 in the fact).

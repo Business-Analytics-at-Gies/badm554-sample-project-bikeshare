@@ -4,6 +4,7 @@
 -- Scope:  trips per month, one column per year.
 -- What would make it wrong: reading 2024 as a normal year. The operator changed systems in July 2024 and
 --         there are no trips at all from July 1 to July 23, so July 2024 shows only 2,035 trips.
+-- Explained in: analyses/README.md and reports/final-report.md (question 4).
 SELECT
   d.month,
   COUNTIF(d.year = 2023) AS trips_2023,

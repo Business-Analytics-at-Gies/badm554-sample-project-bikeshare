@@ -5,6 +5,7 @@
 -- What would make it wrong: a station counted twice under two names. dim_station keeps a renamed station as
 --         two rows (three stations were renamed or moved in the current system), so each is ranked on its own.
 --         None of the three is near the top 15.
+-- Explained in: analyses/README.md and reports/final-report.md (question 1).
 WITH starts AS (
   SELECT start_station_key AS station_key, COUNT(*) AS trips_started
   FROM sample_bikeshare_star.fact_trip AS f

@@ -1,5 +1,7 @@
 # Where Austin's shared bikes are used, and where they pile up
 
+Back to the [project README](../README.md)
+
 **Team:** Sample Team. **Date:** Module 8. **Stakeholder:** a senior planner in a city transportation department.
 
 ## The question
@@ -28,12 +30,14 @@ Three limits you should know before reading the answers.
 ## What we did
 
 We built a small star schema in BigQuery: one table of trips, with a station table, a calendar and a rider type
-table around it. Seven queries in `etl/` build it, and anyone can run them. The analyses are in `analyses/`,
+table around it. Seven queries in [`etl/`](../etl/README.md) build it, and anyone can run them. The analyses are in [`analyses/`](../analyses/README.md),
 one file per question.
 
 ## What we found
 
 ### 1. Which stations are the busiest?
+
+Queries: [`q1-which-stations-are-busiest.sql`](../analyses/q1-which-stations-are-busiest.sql) and [`q1b-trips-per-dock-2023.sql`](../analyses/q1b-trips-per-dock-2023.sql).
 
 In 2025, **E 21st/Speedway @ PCL** was far ahead: 36,844 trips started there, 9.9% of all starts in the system.
 
@@ -56,6 +60,8 @@ station. With that one list, this answer can be redone for 2025 in a few minutes
 
 ### 2. When do people ride, and does it differ by rider type?
 
+Queries: [`q2-when-do-people-ride.sql`](../analyses/q2-when-do-people-ride.sql) and [`q2b-trips-by-hour.sql`](../analyses/q2b-trips-by-hour.sql).
+
 In 2025 the busiest weekday hour was 5 PM (91.5 trips in that hour on an average weekday). Weekdays also have a
 morning rise: 30.6 trips at 7 AM and 52.8 at 8 AM. Weekends have no morning rise and no clear peak: every hour
 from 1 PM to 5 PM has between 69 and 72 trips.
@@ -74,6 +80,8 @@ Two cautions. The rider groups are our own grouping of 17 pass names, and one of
 And we read the hours as local Austin time. The data does not say, but the pattern fits.
 
 ### 3. Which stations gain or lose bikes?
+
+Query: [`q3-which-stations-gain-or-lose-bikes.sql`](../analyses/q3-which-stations-gain-or-lose-bikes.sql).
 
 Net is trips that ended at a station minus trips that started there, in 2025.
 
@@ -94,6 +102,8 @@ whether today's schedule is enough.
 
 ### 4. How did ridership change?
 
+Queries: [`q4-how-did-ridership-change.sql`](../analyses/q4-how-did-ridership-change.sql) and [`q4b-ridership-by-year.sql`](../analyses/q4b-ridership-by-year.sql).
+
 | Year | Trips | Change from 2023 | Median trip |
 |---|---|---|---|
 | 2023 | 283,964 | | 8.0 min |
@@ -107,7 +117,7 @@ up 31.1%. 2025 was above 2023 in every month except January (down 7.9%). The lar
 
 ## How much to trust it
 
-Seven checks pass (`validation/README.md`). The ones that matter most for you:
+Seven checks pass ([`validation/README.md`](../validation/README.md)). The ones that matter most for you:
 
 - The trips table we built has exactly the 908,851 trips the public table has for those dates, each one once.
 - For every one of those trips, the start and end station in our tables is the station named on the trip in the

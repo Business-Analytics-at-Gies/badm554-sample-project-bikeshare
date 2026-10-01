@@ -1,6 +1,8 @@
 # Review 2, from Reviewer Team Y
 
-We reviewed the team's Data Product PDF (`docs/m6-data-product-submission.md` is its source). We could not open
+Back to [all reviews](README.md) or the [project README](../../README.md)
+
+We reviewed the team's Data Product PDF ([`docs/m6-data-product-submission.md`](../m6-data-product-submission.md) is its source). We could not open
 the team's repo.
 
 **Reproducibility: 3 Good.** Could I rebuild every table from this PDF alone, without asking the team? Yes, once I

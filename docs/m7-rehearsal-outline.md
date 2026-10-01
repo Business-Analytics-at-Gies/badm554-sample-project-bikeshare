@@ -1,5 +1,7 @@
 # Module 7: Rehearsal outline
 
+Back to the [project README](../README.md)
+
 Our rehearsal is a recorded video: five minutes on where the project stands, then the hardest questions we expect,
 answered on camera without notes or AI. We picked three. This file is the outline we practised from.
 

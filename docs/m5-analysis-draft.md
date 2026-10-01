@@ -1,5 +1,7 @@
 # Module 5: Analysis Draft
 
+Back to the [project README](../README.md)
+
 A checkpoint on our build. One file: the data diagram, the pipeline sketch, and two queries we ran.
 
 ## Data diagram

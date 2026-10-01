@@ -3,6 +3,7 @@
 --         8 AM (52.8). Weekends have no morning rise and no clear peak: 69 to 72 trips in each hour from 1 PM to 5 PM.
 -- Scope:  average trips started in each hour on a weekday and on a weekend day, calendar year 2025.
 -- What would make it wrong: the hours are read as local Austin time; the source does not say so.
+-- Explained in: analyses/README.md and reports/final-report.md (question 2).
 WITH day_counts AS (
   SELECT COUNTIF(NOT is_weekend) AS weekdays, COUNTIF(is_weekend) AS weekend_days
   FROM sample_bikeshare_star.dim_date WHERE year = 2025

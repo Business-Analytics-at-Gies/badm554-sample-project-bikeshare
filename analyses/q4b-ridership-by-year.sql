@@ -3,6 +3,7 @@
 --         (up 31.1% on 2023). The median trip got shorter: 8.0, then 7.7, then 7.1 minutes.
 -- What would make it wrong: comparing bike types across the system change. The legacy system had classic
 --         and electric bikes; in the current system every trip but one is on a single electric model (called EFIT in the data).
+-- Explained in: analyses/README.md and reports/final-report.md (question 4).
 SELECT
   d.year,
   COUNT(*)                                   AS trips,

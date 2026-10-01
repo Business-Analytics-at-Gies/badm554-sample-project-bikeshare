@@ -1,12 +1,14 @@
 # Module 6 recovery note: the station join
 
+Back to the [project README](../README.md)
+
 This is our recovery evidence for the Project Data Product. It records one wrong turn in the ETL, how we noticed,
 and how we fixed it. The wrong version and the fix are both in the commit history (look for the commits that
-start with "M6:" and touch `etl/03_dim_station.sql` and `etl/06_fact_trip.sql`).
+start with "M6:" and touch [`etl/03_dim_station.sql`](../etl/03_dim_station.sql) and [`etl/06_fact_trip.sql`](../etl/06_fact_trip.sql)).
 
 ## What we planned
 
-In the final proposal, `dim_station` had one row per station id, and `fact_trip` joined to it on
+In the [final proposal](m4-final-proposal.md), `dim_station` had one row per station id, and `fact_trip` joined to it on
 `start_station_id` and `end_station_id`. We listed "station ids may not be stable" as our named risk, with
 "key the station on its name" as the fallback.
 
@@ -74,11 +76,11 @@ on the end station.
 
 ## The fix
 
-1. `01_stg_trips.sql` (Member A): clean the station names. All whitespace becomes a single space and the ends are
+1. [`01_stg_trips.sql`](../etl/01_stg_trips.sql) (Member A): clean the station names. All whitespace becomes a single space and the ends are
    trimmed. It also adds `system_name`, legacy or current, because the same name can exist in both systems.
-2. `03_dim_station.sql` (Member B): one row per station name per system, taken from both the start and the end
+2. [`03_dim_station.sql`](../etl/03_dim_station.sql) (Member B): one row per station name per system, taken from both the start and the end
    of every trip. The id is kept as `source_station_id`, for reference only. A new `station_key` is the key.
-3. `06_fact_trip.sql` (Member A): join to `dim_station` on system and name, never on the id.
+3. [`06_fact_trip.sql`](../etl/06_fact_trip.sql) (Member A): join to `dim_station` on system and name, never on the id.
 
 ## After the fix
 
@@ -93,9 +95,9 @@ that only appear as the end of a trip were added. Renamed stations stay as separ
 
 ## What we added so it cannot come back quietly
 
-- Check 2 (one row per trip) catches the fan-out.
-- Check 4 (one row per station name per system) catches the cause of the fan-out.
-- Check 6 (station names match the source trip) catches the wrong end station. It compares all 908,851 trips.
+- [Check 2](../validation/check_2_one_row_per_trip.sql) (one row per trip) catches the fan-out.
+- [Check 4](../validation/check_4_station_dimension.sql) (one row per station name per system) catches the cause of the fan-out.
+- [Check 6](../validation/check_6_end_station_matches_source.sql) (station names match the source trip) catches the wrong end station. It compares all 908,851 trips.
 
 ## What we learned
 
@@ -104,4 +106,4 @@ found the second because we were already looking at station names by eye. The ch
 that compares our rows with the source, value by value.
 
 The AI assistant drafted the first join for us and joined on the ids. That was a reasonable reading of the column
-names. The mistake was ours: we accepted it without counting names per id first. It is in the AI Attribution Log.
+names. The mistake was ours: we accepted it without counting names per id first. It is in the [AI Attribution Log](ai-attribution-log.md).

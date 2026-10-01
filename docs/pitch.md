@@ -1,5 +1,7 @@
 # Module 2: Project Pitch
 
+Back to the [project README](../README.md)
+
 The pitch itself is a five-minute video with all three of us in it. This file is our outline and speaker notes.
 Path: recorded, with our own two to three minutes of questions at the end.
 

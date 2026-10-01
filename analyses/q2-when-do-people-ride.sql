@@ -5,6 +5,7 @@
 -- Scope:  current system, calendar year 2025. One row per rider group and weekday or weekend.
 -- What would make it wrong: (1) the hours are read as local Austin time; the source does not say so.
 --         (2) Rider groups are our own grouping of pass names (see etl/05_dim_rider_type.sql).
+-- Explained in: analyses/README.md and reports/final-report.md (question 2).
 WITH day_counts AS (
   SELECT is_weekend, COUNT(*) AS days FROM sample_bikeshare_star.dim_date WHERE year = 2025 GROUP BY is_weekend
 ),

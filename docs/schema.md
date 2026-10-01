@@ -1,5 +1,7 @@
 # Schema
 
+Back to the [project README](../README.md)
+
 ## Grain
 
 One row of `fact_trip` is one bike trip that started from 2023-01-01 to 2025-12-31.
@@ -8,12 +10,12 @@ One row of `fact_trip` is one bike trip that started from 2023-01-01 to 2025-12-
 
 | Table | One row is | Key | Built from | Owner |
 |---|---|---|---|---|
-| `fact_trip` | one bike trip | `trip_id` | `stg_trips` and the three dimensions | Member A |
-| `dim_station` | one station name in one system (legacy or current) | `station_key` | `stg_trips` (both ends of every trip) and `stg_stations` | Member B |
-| `dim_date` | one calendar day | `date_key` (the date itself) | generated | Member C |
-| `dim_rider_type` | one pass or membership name | `rider_type_key` | `stg_trips` | Member C |
-| `stg_trips` (view) | one trip in the date range, names cleaned | `trip_id` | `bigquery-public-data.austin_bikeshare.bikeshare_trips` | Member A |
-| `stg_stations` (view) | one station in the city's list | `station_id` | `bigquery-public-data.austin_bikeshare.bikeshare_stations` | Member B |
+| [`fact_trip`](../etl/06_fact_trip.sql) | one bike trip | `trip_id` | `stg_trips` and the three dimensions | Member A |
+| [`dim_station`](../etl/03_dim_station.sql) | one station name in one system (legacy or current) | `station_key` | `stg_trips` (both ends of every trip) and `stg_stations` | Member B |
+| [`dim_date`](../etl/04_dim_date.sql) | one calendar day | `date_key` (the date itself) | generated | Member C |
+| [`dim_rider_type`](../etl/05_dim_rider_type.sql) | one pass or membership name | `rider_type_key` | `stg_trips` | Member C |
+| [`stg_trips`](../etl/01_stg_trips.sql) (view) | one trip in the date range, names cleaned | `trip_id` | `bigquery-public-data.austin_bikeshare.bikeshare_trips` | Member A |
+| [`stg_stations`](../etl/02_stg_stations.sql) (view) | one station in the city's list | `station_id` | `bigquery-public-data.austin_bikeshare.bikeshare_stations` | Member B |
 
 ## Diagram
 
@@ -80,7 +82,7 @@ roll trips up early.
 **Why the station key is the name and system, and the id is only kept for reference.** We planned to use the
 station id. It failed in two ways when we built it. Four ids carry two names each, which multiplied trips. And
 in 2023 the end station id disagrees with the end station name on 47,175 trips. The name is on every trip and
-is never empty, so we trust the name. Details in `docs/m6-recovery-note.md`.
+is never empty, so we trust the name. Details in [`docs/m6-recovery-note.md`](m6-recovery-note.md).
 
 **Why a station can appear twice.** The system changed in July 2024. The trips show a 23-day gap, then all-new
 station ids and a new bike type. We call this a system change, though we did not confirm it with the operator.
@@ -104,7 +106,7 @@ hour would be around noon local time and the quietest around 11 PM, which is unl
 is an assumption we could not confirm.
 
 **Rider groups are ours.** The source has 17 pass names. We grouped them into Student, Annual member, Monthly
-member, Casual and Other in `etl/05_dim_rider_type.sql`. We put "Explorer" under Casual because its trips are
+member, Casual and Other in [`etl/05_dim_rider_type.sql`](../etl/05_dim_rider_type.sql). We put "Explorer" under Casual because its trips are
 long (like day passes), but we did not find a definition of it. The Student group has 145,890 trips in 2023
 and none in 2025: student passes do not exist as a separate name in the current system. So we do not compare
 rider groups across the system change.
