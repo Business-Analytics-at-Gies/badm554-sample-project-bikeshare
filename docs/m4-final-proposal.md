@@ -167,3 +167,20 @@ in the room. Anyone can run the whole build.
   and without it. Without it, the weekday or weekend rule has to be repeated in every query.
 - *One more AI idea we tested and dropped.* A date-and-hour dimension. 1,096 days times 24 hours is 26,304 rows,
   to hold one extra number. The hour stays on the trip.
+
+## 5. Feedback-closure memo
+
+**Feedback we received** on the draft, from Team Y's paired read and from our mentor's comment in Studio.
+
+| # | Who | Feedback | Kept or rejected | Why |
+|---|---|---|---|---|
+| 1 | Team Y | Trip counts cannot show where a station is missing. Question 5 cannot be answered. | Kept. Question 5 is dropped. | They are right. The data only has stations that exist. |
+| 2 | Team Y | We could not tell which years your numbers cover. | Kept. One fixed range, 2023-01-01 to 2025-12-31, written in one cleaning view. | Our own numbers in the draft came from three different ranges. |
+| 3 | Team Y | If ids changed in 2024, a three-year "busiest station" list mixes two sets of stations. | Kept. Station questions use the current system. | We tested it: every station id from late July 2024 on is new. |
+| 4 | Mentor | Do you actually have dock counts for the stations you care about? | Kept, and it changed question 1. | Member B checked. None of the current station ids is in the city list. Per-dock is only possible for the legacy system. |
+| 5 | Team Y | Add weather, rain explains a lot of bike use. | Rejected. | True, but it is a new source and a new join, and none of our four questions asks why. We would spend the build weeks on it. |
+| 6 | Team Y | Use all twelve years for the trend. | Rejected. | The planner's decision is about the system as it is now. Older years describe a smaller system with other stations. |
+
+**What we learned.** Items 3 and 4 came from people who had never queried our data. They asked "which stations?"
+and "do you have that column for those rows?" We had looked at each table and never at whether the two tables talk
+about the same stations. We now check every join for coverage before we plan around it.
