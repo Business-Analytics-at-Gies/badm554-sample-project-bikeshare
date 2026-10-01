@@ -26,7 +26,8 @@ The queries that build our tables. Run them in number order. Each file says who 
 
 ## Two ways to run it
 
-1. With the `bq` command line tool: `sh etl/run_all.sh YOUR_PROJECT_ID`.
+1. With the `bq` command line tool: `sh etl/run_all.sh YOUR_PROJECT_ID`. After a first build, add the word `dry` at
+   the end to see how many bytes each step would scan without running anything.
 2. In the BigQuery console: make a dataset named `sample_bikeshare_star` in your own project, then paste each file
    in number order and run it.
 
