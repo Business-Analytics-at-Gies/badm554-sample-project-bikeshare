@@ -9,19 +9,47 @@ This repo shows what a finished team project can look like, from Module 1 to Mod
 members A, B and C) is made up. The data and every number are real: each one comes from a query that was run on
 the public Austin bikeshare dataset in BigQuery.
 
+## Start here
+
+**If you only have five minutes**, read these in this order:
+
+1. [The final report](reports/final-report.md). The answer the team gave the planner, four questions on one page. It shows where the project ends.
+2. [The schema](docs/schema.md). The star schema, its grain (one row per trip), and why each choice was made.
+3. [One analysis, question 3](analyses/q3-which-stations-gain-or-lose-bikes.sql). One question, one short query, with the answer written at the top.
+4. [The rebuild steps](#rebuild-it-from-a-fresh-clone), further down this page. How anyone rebuilds every table, and the row counts to expect.
+5. [The Data Product PDF source](docs/m6-data-product-submission.md). The one document the team uploaded for peer review in Module 6.
+6. [The recovery note](docs/m6-recovery-note.md). The wrong turn in Module 6, how the team noticed it, and the fix.
+
+### Find what you need this week
+
+| Module | What the course asked for | In this repo | Folder |
+|---|---|---|---|
+| 1 | Project Launch: pairing and scoping notes | [m1-scoping-notes.md](docs/m1-scoping-notes.md) | `docs/` |
+| 2 | Pitch: outline and speaker notes | [pitch.md](docs/pitch.md) | `docs/` |
+| 3 | Draft Proposal, with the paired-read note | [m3-draft-proposal.md](docs/m3-draft-proposal.md) | `docs/` |
+| 4 | Final Proposal: questions, schema and grain, ETL plan, labour split, AI checkpoint, feedback memo, appendix | [m4-final-proposal.md](docs/m4-final-proposal.md) | `docs/` |
+| 5 | Analysis Draft: diagram, pipeline sketch, two queries | [m5-analysis-draft.md](docs/m5-analysis-draft.md) | `docs/` |
+| 6 | Data Product: the pipeline, and the recovery evidence | [etl/README.md](etl/README.md), [m6-recovery-note.md](docs/m6-recovery-note.md) | `etl/`, `docs/` |
+| 6 | Data Product: the one document uploaded for review, as a PDF (rebuild steps, schema, every query, row counts, two analyses, recovery note) | [m6-data-product-submission.md](docs/m6-data-product-submission.md) | `docs/` |
+| 7 | Revision and Rehearsal: reviews received, feedback closure, rehearsal outline | [the reviews](docs/peer-reviews/README.md), [feedback-closure.md](docs/feedback-closure.md), [m7-rehearsal-outline.md](docs/m7-rehearsal-outline.md) | `docs/peer-reviews/`, `docs/` |
+| 8 | Final Deliverable | this README, [warehouse/README.md](warehouse/README.md), [validation/README.md](validation/README.md), [analyses/README.md](analyses/README.md), [final-report.md](reports/final-report.md), [schema.md](docs/schema.md), [ai-attribution-log.md](docs/ai-attribution-log.md), [presentation-outline.md](docs/presentation-outline.md) | several |
+| 8, defense | Oral defense prep, one section per member | [defense-prep.md](docs/defense-prep.md) | `docs/` |
+
+## About this sample
+
 **How it was made.** The whole sample was produced by an AI agent (Claude) working from the course's project
 instructions, in one sitting on the night of September 30 to October 1, 2026. It is to be reviewed by the
 instructor before release. The commits were made in one batch, seconds apart. Their order shows the work growing module by
 module, with each member committing their own files. Their times mean nothing. The commits also go straight to
-`main`. A real team would use a branch and a pull request for each change, as `CONTRIBUTING.md` says.
-See `docs/ai-attribution-log.md`.
+`main`. A real team would use a branch and a pull request for each change, as [`CONTRIBUTING.md`](CONTRIBUTING.md) says.
+See [`docs/ai-attribution-log.md`](docs/ai-attribution-log.md).
 
 ## The project in four lines
 
 - **Stakeholder:** a senior planner in a city transportation department (a made-up person).
 - **Decision:** where to add docks, and where to send the van that moves bikes between stations.
 - **Data:** `bigquery-public-data.austin_bikeshare`, trips that started from 2023-01-01 to 2025-12-31 (908,851 trips).
-- **Answer:** `reports/final-report.md`.
+- **Answer:** [`reports/final-report.md`](reports/final-report.md).
 
 ## Rebuild it from a fresh clone
 
@@ -64,7 +92,7 @@ Your project name is never written in a query. Tables are named by dataset only,
 | `dim_date` | 1,096 |
 | `dim_rider_type` | 17 |
 
-Running the build a second time gives the same counts. The date range is fixed in `etl/01_stg_trips.sql`, so new
+Running the build a second time gives the same counts. The date range is fixed in [`etl/01_stg_trips.sql`](etl/01_stg_trips.sql), so new
 months in the public table do not change them.
 
 **Where this sample's own copy lives.** It was built in the course's BigQuery project, in the dataset
@@ -81,24 +109,17 @@ warehouse/README.md        every table, its grain and its row count
 analyses/                  one query file per stakeholder question
 validation/                seven checks, and what each cannot see
 reports/final-report.md    the write-up for the planner
-docs/                      schema, milestones, reviews, logs (see below)
+docs/                      schema, milestones, reviews, logs (see Start here)
 members/                   each member's weekly work (not included in this sample)
 ```
 
+Each folder has its own README that says what is in it: [etl](etl/README.md), [warehouse](warehouse/README.md),
+[analyses](analyses/README.md), [validation](validation/README.md), [peer reviews](docs/peer-reviews/README.md) and
+[members](members/README.md).
+
 ## The project module by module
 
-| Module | Milestone | File |
-|---|---|---|
-| 1 | Project Launch: pairing and scoping notes | `docs/m1-scoping-notes.md` |
-| 2 | Pitch: outline and speaker notes | `docs/pitch.md` |
-| 3 | Draft Proposal, with the paired-read note | `docs/m3-draft-proposal.md` |
-| 4 | Final Proposal: questions, schema and grain, ETL plan, labour split, AI checkpoint, feedback memo, appendix | `docs/m4-final-proposal.md` |
-| 5 | Analysis Draft: diagram, pipeline sketch, two queries | `docs/m5-analysis-draft.md` |
-| 6 | Data Product: the pipeline, and the recovery evidence | `etl/`, `docs/m6-recovery-note.md` |
-| 6 | Data Product: the one document uploaded for review, as a PDF (rebuild steps, schema, every query, row counts, two analyses, recovery note) | `docs/m6-data-product-submission.md` |
-| 7 | Revision and Rehearsal: reviews received, feedback closure, rehearsal outline | `docs/peer-reviews/`, `docs/feedback-closure.md`, `docs/m7-rehearsal-outline.md` |
-| 8 | Final Deliverable | this README, `warehouse/`, `validation/`, `analyses/`, `reports/`, `docs/schema.md`, `docs/ai-attribution-log.md`, `docs/presentation-outline.md` |
-| 8 | Oral defense prep, one section per member | `docs/defense-prep.md` |
+The table of milestones, with a link to each file, is [Find what you need this week](#find-what-you-need-this-week), near the top of this page.
 
 To see the work grow, read the commit history from the bottom: `git log --reverse --format="%an: %s"`.
 The wrong turn in Module 6 is there too, as a first version of two files and then the fix.
@@ -107,15 +128,15 @@ The wrong turn in Module 6 is there too, as a first version of two files and the
 
 | Member | Files | Questions |
 |---|---|---|
-| Member A | `etl/01_stg_trips.sql`, `etl/06_fact_trip.sql`, `etl/run_all.sh`, checks 1 and 2 | 4 |
-| Member B | `etl/02_stg_stations.sql`, `etl/03_dim_station.sql`, `docs/schema.md`, checks 4 and 6 | 1 and 3 |
-| Member C | `etl/04_dim_date.sql`, `etl/05_dim_rider_type.sql`, `etl/07_row_counts.sql`, checks 3, 5 and 7, the AI log | 2 |
+| Member A | [`etl/01_stg_trips.sql`](etl/01_stg_trips.sql), [`etl/06_fact_trip.sql`](etl/06_fact_trip.sql), [`etl/run_all.sh`](etl/run_all.sh), checks [1](validation/check_1_row_counts_match_source.sql) and [2](validation/check_2_one_row_per_trip.sql) | [4](analyses/q4-how-did-ridership-change.sql) |
+| Member B | [`etl/02_stg_stations.sql`](etl/02_stg_stations.sql), [`etl/03_dim_station.sql`](etl/03_dim_station.sql), [`docs/schema.md`](docs/schema.md), checks [4](validation/check_4_station_dimension.sql) and [6](validation/check_6_end_station_matches_source.sql) | [1](analyses/q1-which-stations-are-busiest.sql) and [3](analyses/q3-which-stations-gain-or-lose-bikes.sql) |
+| Member C | [`etl/04_dim_date.sql`](etl/04_dim_date.sql), [`etl/05_dim_rider_type.sql`](etl/05_dim_rider_type.sql), [`etl/07_row_counts.sql`](etl/07_row_counts.sql), checks [3](validation/check_3_no_missing_keys.sql), [5](validation/check_5_calendar.sql) and [7](validation/check_7_one_month_matches_source.sql), [the AI log](docs/ai-attribution-log.md) | [2](analyses/q2-when-do-people-ride.sql) |
 
-Anyone on the team can run the whole build. Each member explains their own files at their defense.
+Anyone on the team can run the whole build. Each member explains their own files at their defense ([defense prep](docs/defense-prep.md)).
 
 One change from the proposal: there, Member C owned all of `validation/`. During Module 6 we split the checks,
-so that each check is written by the person who owns the table it tests. Member C keeps `validation/README.md`
-and `validation/run_checks.sh`.
+so that each check is written by the person who owns the table it tests. Member C keeps [`validation/README.md`](validation/README.md)
+and [`validation/run_checks.sh`](validation/run_checks.sh).
 
 ## What this project could not answer
 
