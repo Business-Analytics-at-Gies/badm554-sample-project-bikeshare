@@ -1,21 +1,25 @@
 # Review 2, from Reviewer Team Y
 
-**Reproducibility: 6.** Ran in the console by pasting files 01 to 07 in order, after making the dataset. Same
-counts as your warehouse README. It took me about ten minutes. Pasting seven files is fine. A note on how much
-data each step scans would have calmed me down before I pressed run.
+We reviewed the team's Data Product PDF (`docs/m6-data-product-submission.md` is its source). We could not open
+the team's repo.
 
-**Schema and ETL quality: 5.** I like that the date range is in one view. But the calendar table has the same two
-dates written again in `04_dim_date.sql`. If someone changes one and forgets the other, what happens? Nothing
-checks that the two agree.
+**Reproducibility: 3 Good.** Could I rebuild every table from this PDF alone, without asking the team? Yes, once I
+noticed that the dataset has to exist before file 01. Every query is in the PDF, in number order, and the row-count
+table gives me something to compare with. Seven files to paste is fine. A note on how much data each step scans
+would help anyone who rebuilds it. Nothing in the PDF says.
 
-Also: are the hours local time or UTC? Your question 2 is all about hours. If the timestamps are UTC, your rush
-hour is at the wrong time of day.
+**Schema and ETL Quality: 3 Good.** I like that the date range is in one view. But file 04 writes the same two
+dates again for the calendar. If someone changes one and forgets the other, what happens? Nothing checks that the
+two agree.
 
-**Validation confidence: 5.** Check 6 (names match the source) is strong. I would trust the station joins. I am
-less sure about dates. No check looks at dates at all.
+Also: are the hours local time or UTC? File 01 takes the hour straight from `start_time`. Your question 2 is all
+about hours. If the timestamps are UTC, your rush hour is at the wrong time of day.
 
-**Analysis-to-question fit: 5.** Question 4 shows months side by side. July 2024 looks like a collapse. The note
-about the system change is in a SQL comment. Put it where the planner will see it.
+**Validation Confidence: 3 Good.** Check 6 in your recovery note (names match the source) is strong. I would trust
+the station joins. I am less sure about dates. None of the checks you list looks at dates at all.
 
-**Documentation and recovery evidence: 6.** Clear. You should be able to compare a station before and after the
-system change. Right now I cannot see if "21st/Speedway" grew. Can you match the old and new stations?
+**Analysis-to-Question Fit: 3 Good.** Question 4 shows months side by side. July 2024 looks like a collapse. The
+note about the system change is in a SQL comment. Put it where the planner will see it.
+
+**Documentation and Recovery Evidence: 3 Good.** Clear. You should be able to compare a station before and after
+the system change. Right now I cannot see if "21st/Speedway" grew. Can you match the old and new stations?

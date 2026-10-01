@@ -12,5 +12,22 @@ In this sample the reviews are written examples, like the team itself. They show
 | `review-3-reviewer-team-z.md` | Reviewer Team Z |
 | `mentor-review.md` | Our mentor |
 
-Reviewers rated five things on a scale of 1 to 7: reproducibility, schema and ETL quality, validation
-confidence, analysis-to-question fit, and documentation and recovery evidence.
+**What the peer reviewers saw.** Our team repo is private, so peer reviewers cannot open it. We uploaded one PDF
+to the review tool. Its source is `docs/m6-data-product-submission.md`: the README rebuild steps, the schema and
+grain, every query in `etl/`, the row counts, two analyses and the recovery note. Reproducibility means: could a
+reviewer rebuild every table from this PDF alone, without asking us? No reviewer cloned the repo or ran the
+build. One reviewer copied one query from the PDF into their own BigQuery and checked one row count against our
+table. That step is optional.
+
+**Ratings.** Peer reviewers rated five areas, each on four levels, with a comment for each:
+
+- Reproducibility
+- Schema and ETL Quality
+- Validation Confidence
+- Analysis-to-Question Fit
+- Documentation and Recovery Evidence
+
+The levels are 4 Excellent, 3 Good, 2 Developing and 1 Missing.
+
+**The mentor review is different.** Mentors have access to the team repo. Our mentor cloned it and rebuilt the
+tables from it. The mentor wrote comments and did not rate.
