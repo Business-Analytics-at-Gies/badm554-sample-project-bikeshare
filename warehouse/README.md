@@ -1,7 +1,9 @@
 # warehouse/
 
+Back to the [project README](../README.md)
+
 Our tables live in BigQuery, in a dataset named `sample_bikeshare_star`. Nothing is stored in this folder.
-The queries in `etl/` rebuild every table, so there is no file to download.
+The queries in [`etl/`](../etl/README.md) rebuild every table, so there is no file to download.
 
 For this sample the dataset was built in the course project, as `badm554:sample_bikeshare_star`. Tables and views in it
 expire 30 days after they are built. When you rebuild, the tables go into the same dataset name in your own project.
@@ -12,14 +14,14 @@ Built on 2026-09-30. Built a second time the same day, from a fresh clone: same 
 
 | Table | Kind | One row is | Rows |
 |---|---|---|---|
-| `fact_trip` | table | one bike trip that started from 2023-01-01 to 2025-12-31 | 908,851 |
-| `dim_station` | table | one station name in one system (legacy or current) | 171 |
-| `dim_date` | table | one calendar day from 2023-01-01 to 2025-12-31 | 1,096 |
-| `dim_rider_type` | table | one pass or membership name | 17 |
-| `stg_trips` | view | one trip in the date range, before the station and rider keys are added | 908,851 |
-| `stg_stations` | view | one station in the city's station list | 101 |
+| [`fact_trip`](../etl/06_fact_trip.sql) | table | one bike trip that started from 2023-01-01 to 2025-12-31 | 908,851 |
+| [`dim_station`](../etl/03_dim_station.sql) | table | one station name in one system (legacy or current) | 171 |
+| [`dim_date`](../etl/04_dim_date.sql) | table | one calendar day from 2023-01-01 to 2025-12-31 | 1,096 |
+| [`dim_rider_type`](../etl/05_dim_rider_type.sql) | table | one pass or membership name | 17 |
+| [`stg_trips`](../etl/01_stg_trips.sql) | view | one trip in the date range, before the station and rider keys are added | 908,851 |
+| [`stg_stations`](../etl/02_stg_stations.sql) | view | one station in the city's station list | 101 |
 
-`etl/07_row_counts.sql` prints these counts. If yours differ, something changed. The most likely cause is an
+[`etl/07_row_counts.sql`](../etl/07_row_counts.sql) prints these counts. If yours differ, something changed. The most likely cause is an
 edited date range.
 
 ## A little more detail
@@ -28,3 +30,5 @@ edited date range.
 - `dim_station` has 83 legacy stations and 88 current stations. 71 of the legacy stations are in the city list
   and have a dock count. No current station does.
 - `dim_date` has 24 days with no trips: 2023-02-01, and 2024-07-01 to 2024-07-23 (the system change).
+
+Related: [the queries that build each table](../etl/README.md) · [the schema and its decisions](../docs/schema.md) · [the checks](../validation/README.md) · [the analyses](../analyses/README.md)
