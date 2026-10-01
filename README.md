@@ -11,6 +11,13 @@ the public Austin bikeshare dataset in BigQuery.
 
 ## Start here
 
+Find the module you are in, in [the table below](#find-what-you-need-this-week), and open that file.
+You can do everything in the BigQuery console, with nothing installed. The command line steps are optional.
+The folder layout comes from the course structure repo. The decisions (station keys, number of checks, .sql files
+vs a notebook) belong to this dataset and this team, so do not copy them.
+
+**Behind?** Start with [the Module 5 analysis draft](docs/m5-analysis-draft.md), then build one view and one table in the console. One notebook, or the `shared/` folder from the course structure repo, is fine.
+
 **If you only have five minutes**, read these in this order:
 
 1. [The final report](reports/final-report.md). The answer the team gave the planner, four questions on one page. It shows where the project ends.
@@ -30,10 +37,12 @@ the public Austin bikeshare dataset in BigQuery.
 | 4 | Final Proposal: questions, schema and grain, ETL plan, labour split, AI checkpoint, feedback memo, appendix | [m4-final-proposal.md](docs/m4-final-proposal.md) | `docs/` |
 | 5 | Analysis Draft: diagram, pipeline sketch, two queries | [m5-analysis-draft.md](docs/m5-analysis-draft.md) | `docs/` |
 | 6 | Data Product: the pipeline, and the recovery evidence | [etl/README.md](etl/README.md), [m6-recovery-note.md](docs/m6-recovery-note.md) | `etl/`, `docs/` |
-| 6 | Data Product: the one document uploaded for review, as a PDF (rebuild steps, schema, every query, row counts, two analyses, recovery note) | [m6-data-product-submission.md](docs/m6-data-product-submission.md) | `docs/` |
+| 6 | Data Product: the one document uploaded for review (rebuild steps, schema, every query, row counts, two analyses, recovery note) | [m6-data-product-submission.md](docs/m6-data-product-submission.md), or [as a PDF](docs/m6-data-product-submission.pdf) | `docs/` |
 | 7 | Revision and Rehearsal: reviews received, feedback closure, rehearsal outline | [the reviews](docs/peer-reviews/README.md), [feedback-closure.md](docs/feedback-closure.md), [m7-rehearsal-outline.md](docs/m7-rehearsal-outline.md) | `docs/peer-reviews/`, `docs/` |
 | 8 | Final Deliverable | this README, [warehouse/README.md](warehouse/README.md), [validation/README.md](validation/README.md), [analyses/README.md](analyses/README.md), [final-report.md](reports/final-report.md), [schema.md](docs/schema.md), [ai-attribution-log.md](docs/ai-attribution-log.md), [presentation-outline.md](docs/presentation-outline.md) | several |
 | 8, defense | Oral defense prep, one section per member | [defense-prep.md](docs/defense-prep.md) | `docs/` |
+
+Every file in `docs/`, grouped by module, is listed in [docs/README.md](docs/README.md).
 
 ## About this sample
 
@@ -56,7 +65,16 @@ See [`docs/ai-attribution-log.md`](docs/ai-attribution-log.md).
 You need a Google account with BigQuery (the free sandbox is enough). The whole build scans about 0.54 GB.
 Nothing is downloaded: the queries read the public dataset and build the tables in your own BigQuery.
 
-**Way 1: the command line.** You need the `bq` tool, which comes with the Google Cloud SDK.
+**Way 1: the BigQuery console only.** Nothing to install.
+
+1. In the console, pick your own project. Your project ID is shown in the project picker at the top of the BigQuery console.
+2. Make the dataset. In Explorer, click the three dots next to your project, then Create dataset. ID `sample_bikeshare_star`, location US (multi-region).
+3. Open each file in `etl/` in number order, 01 to 07. Paste it into a new query and run it.
+4. Compare the output of file 07 with the table below.
+5. Paste and run each file in `validation/` (`check_1` to `check_7`), then any file in `analyses/`.
+
+**Way 2: the command line (optional).** You need the `bq` tool, which comes with the Google Cloud SDK. The scripts
+run with `sh`, so on Windows use Git Bash or WSL.
 
 1. Clone this repo and go into the folder.
 2. Sign in once: `gcloud auth login`.
@@ -71,14 +89,6 @@ Nothing is downloaded: the queries read the public dataset and build the tables 
 Before a later rebuild you can see how much each step would scan, without running anything:
 `sh etl/run_all.sh YOUR_PROJECT_ID dry`. This needs the tables from a first build to be there.
 
-**Way 2: the BigQuery console only.**
-
-1. In the console, pick your own project at the top.
-2. Make a dataset named `sample_bikeshare_star` (location: US).
-3. Open each file in `etl/` in number order, 01 to 07. Paste it into a new query and run it.
-4. Compare the output of file 07 with the table below.
-5. Paste and run each file in `validation/` (`check_1` to `check_7`), then any file in `analyses/`.
-
 Your project name is never written in a query. Tables are named by dataset only, for example
 `sample_bikeshare_star.fact_trip`. If you want another dataset name, change the one line `DATASET=` at the top of
 `etl/run_all.sh` and `validation/run_checks.sh`. In the console, use find and replace on each query.
@@ -91,6 +101,8 @@ Your project name is never written in a query. Tables are named by dataset only,
 | `dim_station` | 171 |
 | `dim_date` | 1,096 |
 | `dim_rider_type` | 17 |
+| `stg_trips` (view) | 908,851 |
+| `stg_stations` (view) | 101 |
 
 Running the build a second time gives the same counts. The date range is fixed in [`etl/01_stg_trips.sql`](etl/01_stg_trips.sql), so new
 months in the public table do not change them.
@@ -109,7 +121,7 @@ warehouse/README.md        every table, its grain and its row count
 analyses/                  one query file per stakeholder question
 validation/                seven checks, and what each cannot see
 reports/final-report.md    the write-up for the planner
-docs/                      schema, milestones, reviews, logs (see Start here)
+docs/                      schema, milestones, reviews, logs (index: docs/README.md)
 members/                   each member's weekly work (not included in this sample)
 ```
 
