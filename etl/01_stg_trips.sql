@@ -2,7 +2,7 @@
 -- A VIEW (a saved query, stores nothing). Picks the columns we need, cleans the station names,
 -- and fixes the date range.
 -- The date range lives here: trips that started from 2023-01-01 up to, but not including, 2026-01-01.
--- (04_dim_date.sql uses the same two dates.)
+-- (04_dim_date.sql uses the same two dates. Check 5 in validation/ confirms they agree.)
 CREATE OR REPLACE VIEW sample_bikeshare_star.stg_trips AS
 SELECT
   trip_id,
