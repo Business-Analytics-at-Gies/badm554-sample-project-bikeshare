@@ -6,18 +6,18 @@ Every piece of feedback we received on the draft data product, one row each: wha
 The reviews are in [`docs/peer-reviews/`](peer-reviews/README.md). Written in Module 7. Updated in Module 8, when the report was finished.
 
 The three peer reviewers read the one PDF we uploaded ([`docs/m6-data-product-submission.md`](m6-data-product-submission.md)). They could not open
-our repo. Our mentor rebuilt the tables from the repo. The peer ratings, on four levels (4 Excellent, 3 Good,
-2 Developing, 1 Missing):
+our repo. Our mentor rebuilt the tables from the repo. The peer ratings, on four levels (level 4 is the top, then level 3, level 2 and
+level 1):
 
 | Area | [Reviewer Team X](peer-reviews/review-1-reviewer-team-x.md) | [Reviewer Team Y](peer-reviews/review-2-reviewer-team-y.md) | [Reviewer Team Z](peer-reviews/review-3-reviewer-team-z.md) |
 |---|---|---|---|
-| Reproducibility | 2 Developing | 3 Good | 3 Good |
-| Schema and ETL Quality | 3 Good | 3 Good | 3 Good |
-| Validation Confidence | 3 Good | 3 Good | 2 Developing |
-| Analysis-to-Question Fit | 3 Good | 3 Good | 3 Good |
-| Documentation and Recovery Evidence | 4 Excellent | 3 Good | 3 Good |
+| Reproducibility | level 2 | level 3 | level 3 |
+| Schema and ETL Quality | level 3 | level 3 | level 3 |
+| Validation Confidence | level 3 | level 3 | level 2 |
+| Analysis-to-Question Fit | level 3 | level 3 | level 3 |
+| Documentation and Recovery Evidence | level 4 | level 3 | level 3 |
 
-The two Developing ratings are items 1 and 4 below. The table answers every comment, not only the low ratings.
+The two level 2 ratings are items 1 and 4 below. The table answers every comment, not only the low ratings.
 
 | # | Who, and what they said | What we did | Why |
 |---|---|---|---|

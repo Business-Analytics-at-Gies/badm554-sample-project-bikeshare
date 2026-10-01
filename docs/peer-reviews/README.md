@@ -29,9 +29,10 @@ table. That step is optional.
 - Analysis-to-Question Fit
 - Documentation and Recovery Evidence
 
-The levels are 4 Excellent, 3 Good, 2 Developing and 1 Missing.
+The levels are level 4 (top), level 3, level 2 and level 1.
 
 **The mentor review is different.** Mentors have access to the team repo. Our mentor cloned it and rebuilt the
-tables from it. The mentor wrote comments and did not rate.
+tables from it. The mentor also rated the five areas, and that rating counts with the peer ratings.
+Our mentor's ratings are not shown here.
 
 Related: [what we did about each comment](../feedback-closure.md) · [the PDF source the reviewers read](../m6-data-product-submission.md) · [the recovery note](../m6-recovery-note.md)
