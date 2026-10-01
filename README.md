@@ -18,6 +18,7 @@ See `docs/ai-attribution-log.md`.
 - **Stakeholder:** a senior planner in a city transportation department (a made-up person).
 - **Decision:** where to add docks, and where to send the van that moves bikes between stations.
 - **Data:** `bigquery-public-data.austin_bikeshare`, trips that started from 2023-01-01 to 2025-12-31 (908,851 trips).
+- **Answer:** `reports/final-report.md`.
 
 ## Rebuild it from a fresh clone
 
@@ -76,6 +77,7 @@ etl/                       seven queries that build the tables, and run_all.sh
 warehouse/README.md        every table, its grain and its row count
 analyses/                  one query file per stakeholder question
 validation/                seven checks, and what each cannot see
+reports/final-report.md    the write-up for the planner
 docs/                      schema, milestones, reviews, logs (see below)
 members/                   each member's weekly work (not included in this sample)
 ```
@@ -91,6 +93,8 @@ members/                   each member's weekly work (not included in this sampl
 | 5 | Analysis Draft: diagram, pipeline sketch, two queries | `docs/m5-analysis-draft.md` |
 | 6 | Data Product: the pipeline, and the recovery evidence | `etl/`, `docs/m6-recovery-note.md` |
 | 7 | Revision and Rehearsal: reviews received, feedback closure, rehearsal outline | `docs/peer-reviews/`, `docs/feedback-closure.md`, `docs/m7-rehearsal-outline.md` |
+| 8 | Final Deliverable | this README, `warehouse/`, `validation/`, `analyses/`, `reports/`, `docs/schema.md`, `docs/ai-attribution-log.md`, `docs/presentation-outline.md` |
+| 8 | Oral defense prep, one section per member | `docs/defense-prep.md` |
 
 To see the work grow, read the commit history from the bottom: `git log --reverse --format="%an: %s"`.
 The wrong turn in Module 6 is there too, as a first version of two files and then the fix.
