@@ -21,3 +21,8 @@ The reviews are in `docs/peer-reviews/`.
 | 14 | Reviewer Team Y: a note on how much data each step scans. | Changed. `sh etl/run_all.sh YOUR_PROJECT_ID dry` prints the bytes for each step without running it. The whole build is about 0.54 GB. | Cheap to add, and it is a good habit before pressing run. |
 | 15 | Reviewer Team Z: you only have two of your four questions so far. | Changed. Questions 2 and 3 are now in `analyses/`. | This was our plan from the proposal. It is listed here so no comment goes unanswered. |
 | 16 | Mentor: each of you, what in your own files would you not trust yet? | No change to the repo. Each of us wrote an answer while preparing for the defense. | It is a question for each person, so the answers are ours one by one. |
+
+## What we did not take, in one place
+
+Item 9 (matching stations across the two systems) and half of item 5 (per-dock for the current system). Both for
+the same reason: the data to do it properly is not in the public dataset. A reader could not tell our guess from a measured number.
