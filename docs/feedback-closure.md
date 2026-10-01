@@ -3,12 +3,26 @@
 Every piece of feedback we received on the draft data product, one row each: what changed, or why nothing changed.
 The reviews are in `docs/peer-reviews/`. Written in Module 7. Updated in Module 8, when the report was finished.
 
+The three peer reviewers read the one PDF we uploaded (`docs/m6-data-product-submission.md`). They could not open
+our repo. Our mentor rebuilt the tables from the repo. The peer ratings, on four levels (4 Excellent, 3 Good,
+2 Developing, 1 Missing):
+
+| Area | Reviewer Team X | Reviewer Team Y | Reviewer Team Z |
+|---|---|---|---|
+| Reproducibility | 2 Developing | 3 Good | 3 Good |
+| Schema and ETL Quality | 3 Good | 3 Good | 3 Good |
+| Validation Confidence | 3 Good | 3 Good | 2 Developing |
+| Analysis-to-Question Fit | 3 Good | 3 Good | 3 Good |
+| Documentation and Recovery Evidence | 4 Excellent | 3 Good | 3 Good |
+
+The two Developing ratings are items 1 and 4 below. The table answers every comment, not only the low ratings.
+
 | # | Who, and what they said | What we did | Why |
 |---|---|---|---|
-| 1 | Reviewer Team X, Reviewer Team Z, mentor: the build stops with "Not found: Dataset". The README never says to make the dataset. | Changed. `etl/run_all.sh` now makes the dataset if it is missing. The README has numbered rebuild steps, including the console way. Member C, who did not write them, followed them from a fresh clone and got the same counts. | Two reviewers hit it and the mentor flagged it. We had each made the dataset weeks ago and forgot it was a step. |
+| 1 | Reviewer Team X, Reviewer Team Z, mentor: the README in our PDF never says to make the dataset before file 01. The mentor's rebuild from the repo stopped with "Not found: Dataset". | Changed. `etl/run_all.sh` now makes the dataset if it is missing. The README has numbered rebuild steps, including the console way. Member C, who did not write them, followed them from a fresh clone and got the same counts. | Two reviewers found it by reading the PDF, and the mentor hit it in a real rebuild. We had each made the dataset weeks ago and forgot it was a step. |
 | 2 | Reviewer Team X: say that the `bq` tool is needed, and what to do with only the console. | Changed. The README lists what you need and gives both ways. | Fair. We assumed our own setup. |
-| 3 | Reviewer Team X: "Dean Keeton/Speedway" is in `dim_station` twice and the schema file does not say why. | Changed. `docs/schema.md` now has a section on why a station can appear twice. | It is on purpose (once per system), and a reader should not have to work that out. |
-| 4 | Reviewer Team X, Reviewer Team Z: no number is checked against the public table directly. | Changed. Added check 7: June 2025 trips and minutes, counted from the star and counted straight from the public table. Both give 22,492 trips. | Checks 1 and 6 already read the public table, but nothing told the reviewer so. The validation README now says what each check compares with. Check 1 covers the whole range only. One month through `dim_date` also tests the date key. |
+| 3 | Reviewer Team X: "Dean Keeton/Speedway" must be in `dim_station` twice, and the PDF does not say why. | Changed. `docs/schema.md` now has a section on why a station can appear twice. | It is on purpose (once per system), and a reader should not have to work that out. |
+| 4 | Reviewer Team X, Reviewer Team Z: no number is checked against the public table directly. | Changed. Added check 7: June 2025 trips and minutes, counted from the star and counted straight from the public table. Both give 22,492 trips. | Checks 1 and 6 already read the public table, but nothing in the PDF told the reviewer so. The validation README now says what each check compares with. Check 1 covers the whole range only. One month through `dim_date` also tests the date key. |
 | 5 | Reviewer Team X, mentor: where is the per-dock answer you promised? | Changed in part. Added `analyses/q1b-trips-per-dock-2023.sql`, for the legacy system in 2023. The report says plainly that it cannot be done for the current system and what to ask the operator for. | The city list has dock counts for 71 legacy stations and for none of the 88 current ones. Without dock counts there is nothing to divide by. |
 | 6 | Reviewer Team Y: the date range is written in two files and nothing checks they agree. | Changed. Added check 5, which tests that the calendar and the trips cover the same days. We left the dates where they are: in the two build files, and in checks 1 and 5 that test them. | Check 5 is the cheaper fix. It also found something: 24 days with no trips, when we expected 23. See `validation/README.md`. |
 | 7 | Reviewer Team Y: are the hours local time or UTC? | No change to the data. We wrote the assumption into `docs/schema.md` and into each hour answer. | The source does not say. The pattern fits local time (quietest at 4 AM, busiest at 5 PM). We could not confirm it, so we say it is an assumption. |
