@@ -2,13 +2,16 @@
 
 > **SAMPLE PROJECT, fictional team, for BADM 554 learners to read. It is not a template to copy and not an answer key. Your project must use your own dataset and your own decisions.**
 
+Austin bikeshare is not on the course's dataset menu. It was picked for this sample on purpose, so no real team has
+it. This is not permission to pick an off-menu dataset: the Project Launch rules still apply to your team.
+
 This repo shows what a finished team project can look like, from Module 1 to Module 8. The team ("Sample Team",
 members A, B and C) is made up. The data and every number are real: each one comes from a query that was run on
 the public Austin bikeshare dataset in BigQuery.
 
 **How it was made.** The whole sample was produced by an AI agent (Claude) working from the course's project
-instructions, in one sitting on the night of September 30 to October 1, 2026, and then reviewed by the
-instructor. The commits were made in one batch, seconds apart. Their order shows the work growing module by
+instructions, in one sitting on the night of September 30 to October 1, 2026. It is to be reviewed by the
+instructor before release. The commits were made in one batch, seconds apart. Their order shows the work growing module by
 module, with each member committing their own files. Their times mean nothing. The commits also go straight to
 `main`. A real team would use a branch and a pull request for each change, as `CONTRIBUTING.md` says.
 See `docs/ai-attribution-log.md`.
