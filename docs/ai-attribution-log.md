@@ -22,3 +22,11 @@ query that was run.
 | 7 ★ | Member C | AI coding assistant | Draft check 5 (calendar). | The query. | The expectation in it (23 empty days) was ours and it was wrong: there are 24. We corrected the check after looking at the source. |
 | 7 | Member B | AI chat assistant | Suggest a rule to match old and new station names. | The rule (drop a leading E, W, N or S). | We measured it: 55 of 88 match. We decided not to use a partial match. |
 | 7 ★ | Member C | AI coding assistant | Add a "busiest hour" column to question 2. | Nothing. | It used `APPROX_TOP_COUNT`. The first run showed 1 AM as annual members' busiest weekend hour. We did not believe it, counted exactly, and got 5 PM (3,849 trips, the most of any hour). When we ran the same expression again it also said 5 PM. We could not reproduce the 1 AM result and do not know what caused it. We removed the column and used the exact hourly table in `q2b`. |
+| 8 | Member A | AI chat assistant | Shorten the report and cut jargon. | Shorter sentences. | It turned "we could not confirm" into "likely" in two places. We put our wording back. |
+| 8 | All | AI chat assistant | Ask us the questions a planner would ask (defense practice). | The practice. | No AI in the defense itself. |
+
+## What changed in how we use it
+
+In Modules 2 to 4 we asked AI for ideas and judged them by argument. From Module 6 we judged them by running a
+query. Every row from Module 6 on has a number in it. The time we accepted AI output without a count, the
+station join, is the time it cost us a rebuild.
